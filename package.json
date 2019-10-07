@@ -21,26 +21,18 @@
     "stylus": "^0.54.5"
   },
   "scripts": {
-    "deploy": "gh-pages -d build --git git",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn run build",
-    "css": "stylus -w src/stylus/index.styl -o src",
-    "stylus":"stylus -w src/stylus/index.styl -o src",
-
-    "build-css": "stylus -c src/stylus/ --out src",
-    "watch-css": "yarn run build-css && stylus -c -w src/stylus/ --out src",
-    "start-js": "react-scripts start",
+    "deploy": "gh-pages -d build",
     "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build-js",
-    "deploy": "gh-pages -d build"
-
+    "css": "stylus -w src/stylus/index.styl -o src",
+    "stylus": "stylus -w src/stylus/index.styl -o src",
+    "build-css": "stylus -c src/stylus/ --out src",
+    "watch-css": "yarn run build-css && stylus -c -w src/stylus/ --out src",
+    "start-js": "react-scripts start",
+    "build-js": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
