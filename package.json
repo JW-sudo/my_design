@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tbsse.github.io/my-app",
+  "homepage": "https://JW-sudo.github.io/my_design",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
@@ -21,12 +21,26 @@
     "stylus": "^0.54.5"
   },
   "scripts": {
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build --git git",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "css": "stylus -w src/stylus/index.styl -o src"
+    "predeploy": "yarn run build",
+    "css": "stylus -w src/stylus/index.styl -o src",
+    "stylus":"stylus -w src/stylus/index.styl -o src",
+
+    "build-css": "stylus -c src/stylus/ --out src",
+    "watch-css": "yarn run build-css && stylus -c -w src/stylus/ --out src",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build-js",
+    "deploy": "gh-pages -d build"
+
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +52,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.1.1",
+    "install": "^0.13.0",
+    "npm": "^6.11.3",
+    "npm-run-all": "^4.1.5"
   }
 }

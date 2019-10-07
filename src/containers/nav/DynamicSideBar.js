@@ -26,47 +26,60 @@ class DynamicSideBar extends React.Component
    this.props.resetValue();
  };
 
-  renderNavItem(node)
+  //navItem为传进来navigation bar中的某一项，数据来源参考data.js
+  renderNavItem(navItem)
   {
-    const MyIcon = Icons[node.icon];
-    if(node.subNavItems)
+    const MyIcon = Icons[navItem.icon];
+
+    //如果这个选项有子选项
+    if(navItem.subNavItems)
     {
-      let listItems = this.loopSubItems(node.subNavItems);
-      const expand = this.props.state[node.label] === undefined
-                ? window.location.hash.indexOf(node.url) > -1
-                : this.props.state[node.label];
-      this.props.setState(node.label,expand);
+      let listSubitems = this.listLoop(navItem.subNavItems);
+      console.log(this.props.state[navItem.label])
+
+      const expand =                                          /*定义expand为false or true*/
+          this.props.state[navItem.label] === undefined       /*?????????/*/
+          ? false : this.props.state[navItem.label];
+          this.props.setState(navItem.label,expand);
+
         return(
-          <div key = {node.label}>
-            <ListItem button onClick={()=>{this.openSubList(node.label,expand)}}>
+          <div key = {navItem.label}>
+{/*有子选项的选项，包括该选项的图标、名称*/}
+            <ListItem button onClick={()=>{this.openSubList(navItem.label,expand)}}>  {/*如果用户点击，更新用户是否展开了某一项的状态*/}
               <ListItemIcon>
                 <MyIcon />
               </ListItemIcon>
-              <ListItemText inset primary={node.label} />
+              <ListItemText inset primary={navItem.label} />
+              {/*ExpandLess是向上收的箭头，ExpandMore是向下展开的箭头*/}
               {expand?<Icons.ExpandLess/> : <Icons.ExpandMore/>}
             </ListItem>
-            <Divider />
+
+            <Divider /> {/*分割线*/}
+
+{/*是否显示所有子选项*/}
             <Collapse in={expand} timeout="auto" unmountOnExit>
             <List component="div">
-             {listItems}
+             {listSubitems}
             </List>
             </Collapse>
 
           </div>
       );
     }
+
+    //如果这个选项没有子选项
     else
     {
       return(
-        <div key={node.label}>
-          <NavLink exact = {node.url === '/'} to={node.url} activeClassName="on-click">
+        <div key={navItem.label}>
+          <NavLink exact = {navItem.url === '/'} to={navItem.url} activeClassName="on-click">
             <ListItem button onClick = {this.resetTabView}>
               <ListItemIcon>
                 <MyIcon />
               </ListItemIcon>
-              <ListItemText primary={node.label} />
+              <ListItemText primary={navItem.label} />
             </ListItem>
-            </NavLink>
+          </NavLink>
           <Divider />
         </div>
       );
@@ -79,27 +92,17 @@ class DynamicSideBar extends React.Component
     let output = [];
     for(let i in list)
     {
-      output.push(this.renderNavItem(list[i]));
+      output.push(this.renderNavItem(list[i]));//把每个选项push到output中
     }
-    return(
-      <div>
-      {output}
-      </div>
-    );
+    return output;
   }
 
-  loopSubItems(list)
-  {
-    let listItems = []
-    for(let i in list)
-      {
-        listItems.push(this.renderNavItem(list[i]));
-      }
-    return listItems;
-  }
+  /*
+  * *从这里开始渲染
+  * */
   render()
   {
-    const { data } = this.props;
+    const { data } = this.props;//用data代替this.props.data， 所以data在此时为data.js中的navItems
     return(
       <div>
         {this.listLoop(data)}
@@ -107,6 +110,8 @@ class DynamicSideBar extends React.Component
     );
   }
 }
+
+
 
 const mapStateToProps = (state) =>{
   return{

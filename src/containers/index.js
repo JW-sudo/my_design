@@ -37,25 +37,22 @@ import MyScatterplot from '../components/contentlist/Charts/Scatterplot/scatterp
 import MyAvatar from '../components/contentlist/Components/Avatar/avatar.js';
 import MyMarkdown from '../components/contentlist/Components/Markdown/markdown.js';
 import MyPanel from '../components/contentlist/Components/Panel/panel.js';
-import {connect} from 'react-redux';
-import AppAction from '../actions/AppAction/appAction.js'
+import {connect} from 'react-redux'; //react-redux给我们提供的第二个核心API叫connect (第一个是Provider)
 
 class App extends React.Component
 {
-  handleNavOpen = () =>{
-    this.props.leftMenuOpen();
-  };
-
   render()
   {
     return(
-       <HashRouter >
+        // HashRouter必须放在最外层， 并且与switch, route搭配
+        <HashRouter>
       <div className= 'App' >
          <div>
-         <Header SideBarOpen={this.handleNavOpen} listOpenState = {this.props.leftOpen}/>
+         <Header />
          </div>
 
          <div className = {this.props.leftOpen ? "move-right" : "default"}>
+{/*content为主要展示部分*/}
              <div className = "content">
              <Switch>
              <Route path = "/" component = {MyHome}  key = "/home" exact/>
@@ -68,7 +65,7 @@ class App extends React.Component
              <Route path = "/components/spinner" component = {MySpinner} key = "/components/spinner"/>
              <Route path = "/components/progress" component = {MyProgress} key = "/components/progress"/>
              <Route path = "/components/infocard" component = {MyInfoCard} key = "/components/infocard"/>
-             //<Route path = "/components/messagebar" component = {MyMessageBar} key = "/components/messagebar"/>
+             <Route path = "/components/messagebar" component = {MyMessageBar} key = "/components/messagebar"/>
              <Route path = "/components/dialog" component = {MyDialog} key = "/components/dialog"/>
              <Route path = "/components/chips" component = {MyChips} key = "/components/chips"/>
              <Route path = "/components/notification" component = {MyNotification} key = "/components/notification"/>
@@ -91,15 +88,21 @@ class App extends React.Component
              </Switch>
              </div>
          </div>
+{/*Footer组件*/}
          <div className = "footer-position">
            <Footer />
          </div>
+
       </div>
-      </HashRouter>
+        </HashRouter>
 
     );
   }
 }
+
+
+//第一个connect的参数
+//更新最新的state
 const mapStateToProps = (state) =>{
   return{
     leftOpen: state.appReducer.leftOpen,
@@ -107,10 +110,11 @@ const mapStateToProps = (state) =>{
   }
 }
 
-const mapDispatchtoProps = (dispatch) =>{
-  return{
-    leftMenuOpen: () => {dispatch(AppAction.LeftMenuOpen())},
-  }
-}
+//第二个connect的参数
 
-export default connect(mapStateToProps,mapDispatchtoProps)(App);
+// const mapDispatchtoProps = (dispatch) =>{
+//   return{
+//   }
+// }
+
+export default connect(mapStateToProps)(App);//connect方法，让App组件和store做连接

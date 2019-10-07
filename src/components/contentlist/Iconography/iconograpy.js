@@ -78,7 +78,7 @@ class MyIconography extends React.Component
     }
     return(
       <div >
-        <Paper className = "icon-paper" elevation = {20}>
+        <Paper className = "icon-paper">
           <h1 className = "icon-title">Click on Icons to Check Sample Usage</h1>
           <ul className = "icons-display">{output}</ul>
           {this.renderDialog()}

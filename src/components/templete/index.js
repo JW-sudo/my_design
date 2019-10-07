@@ -35,8 +35,10 @@ class MyTemplete extends React.Component
             </Tabs>
             </div>
           </AppBar>
-          {value === 0 && this.props.content}
-          {value === 1 && this.props.sampleUsage}
+          <div>
+              {value === 0 && this.props.content}
+              {value === 1 && this.props.sampleUsage}
+          </div>
         </Paper>
       </div>
     );

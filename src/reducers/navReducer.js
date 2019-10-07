@@ -10,11 +10,11 @@ Return data to be rendered in left menu, including sublist data
 
 */
 
-import Data from "./data.js";
+import navData from "./data.js";
 import Action from "../actions/ActionID/actionID.js";
 
 const initState = {
-  data : Data.navItems,
+  data : navData.navItems,
   value: 0,
   event: null
 }

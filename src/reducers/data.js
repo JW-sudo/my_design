@@ -182,7 +182,9 @@ const navItems = [
     }
 ];
 
-const rightMenu = [
+
+
+const headerMore= [
   {
     label: 'Material-UI',
     link: 'https://material-ui.com/'
@@ -192,10 +194,10 @@ const rightMenu = [
     link: 'https://reactjs.org/'
   },
   {
-    label: 'React-Vis',
-    link: 'https://github.com/uber/react-vis'
-  },
+    label: 'Redux',
+    link: 'https://redux.js.org/'
+  }
 ];
 
 
-export default {navItems,rightMenu}
+export default {navItems,headerMore}

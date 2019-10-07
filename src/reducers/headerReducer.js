@@ -12,7 +12,7 @@ import Action from "../actions/ActionID/actionID.js";
 
 const initState = {
   anchorEl : null,
-  rightContent: Data.rightMenu
+  rightContent: Data.headerMore
 }
 
 const headerReducer = (state = initState, action) => {
