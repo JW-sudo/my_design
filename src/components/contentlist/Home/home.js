@@ -15,7 +15,7 @@ class MyHome extends React.Component
           <div className="home-content">
               Welcome to <br />
             <a href={"https://janet101.github.io/my_design/"}>
-                My Design System
+                &nbsp; My Design System
             </a>
           </div>
       </div>
