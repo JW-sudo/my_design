@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/my_design/static/css/main.e2deda98.chunk.css",
+    "main.js": "/my_design/static/js/main.5acf696f.chunk.js",
+    "main.js.map": "/my_design/static/js/main.5acf696f.chunk.js.map",
+    "runtime-main.js": "/my_design/static/js/runtime-main.c2cd853d.js",
+    "runtime-main.js.map": "/my_design/static/js/runtime-main.c2cd853d.js.map",
+    "static/css/2.5a2f7233.chunk.css": "/my_design/static/css/2.5a2f7233.chunk.css",
+    "static/js/2.74aea4ca.chunk.js": "/my_design/static/js/2.74aea4ca.chunk.js",
+    "static/js/2.74aea4ca.chunk.js.map": "/my_design/static/js/2.74aea4ca.chunk.js.map",
+    "index.html": "/my_design/index.html",
+    "precache-manifest.1849a95e3cf91f5f789ab8a2759c5fdb.js": "/my_design/precache-manifest.1849a95e3cf91f5f789ab8a2759c5fdb.js",
+    "service-worker.js": "/my_design/service-worker.js",
+    "static/css/2.5a2f7233.chunk.css.map": "/my_design/static/css/2.5a2f7233.chunk.css.map",
+    "static/css/main.e2deda98.chunk.css.map": "/my_design/static/css/main.e2deda98.chunk.css.map",
+    "static/media/header_icon.png": "/my_design/static/media/header_icon.4e75dffc.png",
+    "static/media/uni.jpg": "/my_design/static/media/uni.f355c337.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c2cd853d.js",
+    "static/css/2.5a2f7233.chunk.css",
+    "static/js/2.74aea4ca.chunk.js",
+    "static/css/main.e2deda98.chunk.css",
+    "static/js/main.5acf696f.chunk.js"
+  ]
+}
